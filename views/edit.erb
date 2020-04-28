@@ -1,0 +1,17 @@
+<form action="/subscriptions" method="post">
+    <input name = "_method" type = "hidden" value = "patch">
+    <input name = "id" type = "hidden" value = "<%= subscription['id']%>">
+    <label for = "title">Title</label>
+    <input name = "title" type = "text" value = "<%= subscription['title']%>">
+    <label  for = "price">Amount $</label>
+    <input name = "price" type = "text" value = "<%= subscription['price']%>">
+    <label  for = "recurring">Recurring</label>
+    <input name = "recurring" type = "text" value = "<%= subscription['recurring']%>">
+    <label  for = "start_date">Start Date</label>
+    <input name = "start_date" type = "date" value = "<%= subscription['start_date']%>">
+    <label  for = "cancel_date">Cancel Date</label>
+    <input name = "cancel_date" type = "date" value = "<%= subscription['cancel_date']%>">
+    <label  for = "site_url">Website URL</label>
+    <input name = "site_url" type = "text" value = "<%= subscription['site_url']%>">
+    <button>Submit</button>
+</form>

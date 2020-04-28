@@ -23,3 +23,4 @@ INSERT INTO subscriptions (title, price,recurring, start_date, cancel_date, site
 INSERT INTO users (user_name, email, password_digest) VALUES ('Shailesh INSERT INTO users (user_name, email, password_digest) VALUES ('Shailesh Karki','karkishailesh@hotmail.com','p');Karki','karkishailesh@hotmail.com','p');
 
 ALTER TABLE subscriptions ADD COLUMN user_id INTEGER;
+UPDATE subscriptions SET user_id = 1;

@@ -1,0 +1,12 @@
+<h1><%=subscription["title"]%> Details</h1>
+<div>Price $: <%=subscription["price"]%></div>
+<div>Recurring: <%=subscription["recurring"]%></div>
+<div>Start Date: <%=subscription["start_date"]%></div>
+<div>Cancel Date: <%=subscription["cancel_date"]%></div>
+<div>Website URL: <%=subscription["site_url"]%></div>
+<form action="/subscriptions" method="post">
+    <input type="hidden" name="id" value=<%= subscription["id"]%>>
+    <input type="hidden" name="_method" value="delete">
+    <button>Delete</button>
+</form>
+<a href="/subscriptions/<%= subscription["id"]%>/edit">Edit</a>

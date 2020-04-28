@@ -1,0 +1,15 @@
+	rest	restful routes	convention		
+	resource	subscriptions			
+		restful apis			
+routes					
+http method	path	crud	sql	erb template name	description
+get	/				
+get	/subscriptions	read	select		listing all subscriptions
+post	/subscriptions	create	insert		insert new subscription
+delete	/subscriptions	delete	delete		removing an existing subscription
+patch	/subscriptions	update	update		update existing subscription
+					
+get	/			index.erb	home
+get	/subscriptions/new	read		new.erb	get me the new subscription form
+get	/subscriptions/id/edit	read	select	edit.erb	get me the update form for an existing subscription
+get	/subscriptions/id	read	select	show.erb	single subscription details

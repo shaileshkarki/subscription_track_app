@@ -1,1 +1,32 @@
-<h1>hello world</h1>
+<h1>Subscription Information Tracker</h1>
+    <a href='/subscriptions/new'>Create New Subscription</a>
+        <div class="subscription-info">
+            <% subscriptions.each do |subscription|%>
+                <p class="item">
+                    <%=subscription['title']%>   
+                </p>
+                <p class="item">
+                    Fee per <%=subscription['recurring']%>: <%=subscription['price']%>   
+                </p>
+                <p class="item">
+                    Start Date: <%=subscription['start_date']%>   
+                </p>
+                <p class="item">
+                    Cancel Date: <%=subscription['cancel_date']%>   
+                </p>
+                <p class="item">
+                    Website URL <%=subscription['site_url']%>   
+                </p>
+                <p class="item">
+                    <a href="/subscriptions/<%= subscription["id"]%>/edit">Update</a> 
+                </p>
+                <form class="item" action="/subscriptions" method="post">
+                    <input class="hidden-input" type="hidden" name="id" value=<%= subscription["id"]%>>
+                    <input class="hidden-input" type="hidden" name="_method" value="delete">
+                    <button>Delete</button>
+                </form>
+            <% end%>
+        <div>  
+    
+
+   
