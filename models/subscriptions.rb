@@ -1,5 +1,5 @@
 def run_sql(sql,params)
-    conn = PG.connect(dbname: 'subcscription_app')
+    conn = PG.connect(dbname: 'subscription_app')
     #executing sql statement
     records = conn.exec_params(sql,params)
     # connection close
@@ -7,9 +7,9 @@ def run_sql(sql,params)
     return records
 end
 
-def all_subscriptions()
-    sql = "SELECT * FROM subscriptions"
-    params = []
+def all_subscriptions(id)
+    sql = "SELECT * FROM subscriptions WHERE user_id = $1;"
+    params = [id]
     subscriptions = run_sql(sql,params)
     subscriptions
 end

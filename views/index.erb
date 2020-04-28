@@ -6,7 +6,7 @@
                     <%=subscription['title']%>   
                 </p>
                 <p class="item">
-                    Fee per <%=subscription['recurring']%>: <%=subscription['price']%>   
+                    Fee per <%=check_recurring(subscription['recurring'])%>: <%=subscription['price']%>   
                 </p>
                 <p class="item">
                     Start Date: <%=subscription['start_date']%>   
