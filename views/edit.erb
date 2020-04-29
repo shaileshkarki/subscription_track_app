@@ -5,8 +5,16 @@
     <input name = "title" type = "text" value = "<%= subscription['title']%>">
     <label  for = "price">Amount $</label>
     <input name = "price" type = "text" value = "<%= subscription['price']%>">
-    <label  for = "recurring">Recurring</label>
-    <input name = "recurring" type = "text" value = "<%= subscription['recurring']%>">
+    <label  for = "recurring">Recurring <%= subscription['recurring']%></label>
+    <select name="recurring" required>
+        <%["Yearly","Half Yearly","Quarterly","Bimonthly","Fortnightly","Weekly","Monthly","Daily"].each_with_index do |option,index| %>    
+            <% if((subscription['recurring'].to_i)==(index+1)) %>
+                <option value="<%= (index+1) %>" <%= "selected"%>><%= option  %></option>
+            <% else %>
+                <option value="<%= (index+1) %>"><%= option  %></option>
+            <% end %>
+        <% end %>
+    </select>
     <label  for = "start_date">Start Date</label>
     <input name = "start_date" type = "date" value = "<%= subscription['start_date']%>">
     <label  for = "cancel_date">Cancel Date</label>

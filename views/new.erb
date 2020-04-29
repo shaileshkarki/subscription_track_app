@@ -4,7 +4,16 @@
     <label  for="price">Amount</label>
     <input name="price" type="text">
     <label  for="recurring">Recurring</label>
-    <input name="recurring" type="text">
+    <select id="recurring" required>
+        <option value="1">Yearly</option>
+        <option value="2">Half Yearly</option>
+        <option value="3">Quarterly</option>
+        <option value="4">Bimonthly</option>
+        <option value="5">Fortnightly</option>
+        <option value="6">Weekly</option>
+        <option value="7" selected>Monthly</option>
+        <option value="8">Daily</option>
+    </select>
     <label  for="start_date">Start Date</label>
     <input name="start_date" type="date">
     <label  for="cancel_date">Cancel Date</label>
@@ -12,4 +21,8 @@
     <label  for="site_url">Website URL</label>
     <input name="site_url" type="text">
     <button>Submit</button>
+</form>
+
+<form>
+    in
 </form>

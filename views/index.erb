@@ -1,32 +1,61 @@
-<h1>Subscription Information Tracker</h1>
-    <a href='/subscriptions/new'>Create New Subscription</a>
-        <div class="subscription-info">
-            <% subscriptions.each do |subscription|%>
-                <p class="item">
-                    <%=subscription['title']%>   
-                </p>
-                <p class="item">
-                    Fee per <%=check_recurring(subscription['recurring'])%>: <%=subscription['price']%>   
-                </p>
-                <p class="item">
-                    Start Date: <%=subscription['start_date']%>   
-                </p>
-                <p class="item">
-                    Cancel Date: <%=subscription['cancel_date']%>   
-                </p>
-                <p class="item">
-                    Website URL <%=subscription['site_url']%>   
-                </p>
-                <p class="item">
-                    <a href="/subscriptions/<%= subscription["id"]%>/edit">Update</a> 
-                </p>
-                <form class="item" action="/subscriptions" method="post">
-                    <input class="hidden-input" type="hidden" name="id" value=<%= subscription["id"]%>>
-                    <input class="hidden-input" type="hidden" name="_method" value="delete">
-                    <button>Delete</button>
-                </form>
-            <% end%>
-        <div>  
+
+<a href='/subscriptions/new'>Create New Subscription</a>
+<h2>Reminder for deletion today:</h2> 
+<div class="subscription-info">
+    <% deletions.each do |deletion|%>
+        <p class="item">
+            <%=deletion['title']%>   
+        </p>
+        <p class="item">
+            Fee per <%=check_recurring(deletion['recurring'])%>: <%=deletion['price']%>   
+        </p>
+        <p class="item">
+            Start Date: <%=deletion['start_date']%>   
+        </p>
+        <p class="item">
+            Cancel Date: <%=deletion['cancel_date']%>   
+        </p>
+        <p class="item">
+            Website URL <%=deletion['site_url']%>   
+        </p>
+        <p class="item">
+            <a href="/subscriptions/<%= deletion["id"]%>/edit">Update</a> 
+        </p>
+        <form class="item" action="/subscriptions" method="post">
+            <input class="hidden-input" type="hidden" name="id" value=<%= deletion["id"]%>>
+            <input class="hidden-input" type="hidden" name="_method" value="delete">
+            <button>Delete</button>
+        </form>
+    <% end%>
+</div>
+<h2>List of subscribed services:</h2> 
+<div class="subscription-info">
+    <% subscriptions.each do |subscription|%>
+        <p class="item">
+            <%=subscription['title']%>   
+        </p>
+        <p class="item">
+            Fee per <%=check_recurring(subscription['recurring'])%>: <%=subscription['price']%>   
+        </p>
+        <p class="item">
+            Start Date: <%=subscription['start_date']%>   
+        </p>
+        <p class="item">
+            Cancel Date: <%=subscription['cancel_date']%>   
+        </p>
+        <p class="item">
+            Website URL <%=subscription['site_url']%>   
+        </p>
+        <p class="item">
+            <a href="/subscriptions/<%= subscription["id"]%>/edit">Update</a> 
+        </p>
+        <form class="item" action="/subscriptions" method="post">
+            <input class="hidden-input" type="hidden" name="id" value=<%= subscription["id"]%>>
+            <input class="hidden-input" type="hidden" name="_method" value="delete">
+            <button>Delete</button>
+        </form>
+    <% end%>
+<div>  
     
 
    

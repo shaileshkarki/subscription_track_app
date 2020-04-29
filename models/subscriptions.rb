@@ -20,6 +20,14 @@ def find_one_subscription_by_id(id)
     subscription = run_sql(sql, params)[0]
     return subscription
 end
+
+def find_subscriptions_by_id_and_cancel_date(id, date)
+    sql = "SELECT * FROM subscriptions WHERE user_id = $1 AND cancel_date <= $2;"
+    params = [id, date]
+    subscription = run_sql(sql, params)
+    return subscription
+end
+
 # <<-SQL is herodocs sql goes in here SQL
 def create_subscription (title, price, recurring, start_date, cancel_date, site_url, user_id)  
     params = [title, price, recurring, start_date, cancel_date, site_url, user_id]

@@ -2,9 +2,11 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'pg'
+require 'date'
 require_relative 'models/subscriptions'
 require_relative 'models/users'
 require_relative 'lib'
+
 enable :sessions
 
 
@@ -13,8 +15,11 @@ enable :sessions
 get '/' do 
   if session[:user_id]
     subscriptions = all_subscriptions(session[:user_id])  
-    # raise subscriptions
-    erb(:index, locals: {subscriptions: subscriptions})
+    deletions = deletion_reminder(session[:user_id])
+    erb(:index, locals: {
+      subscriptions: subscriptions,
+      deletions: deletions
+      })
   else
     message = ''
     message = "Login to access your account"
@@ -32,12 +37,12 @@ get '/subscriptions/:id' do
 end
 
 get '/subscriptions/:id/edit' do
-  subscription = find_one_subscription_by_id(params["id"])     
+  subscription = find_one_subscription_by_id(params["id"])   
   erb(:edit, locals:{subscription: subscription})
 end
 
 patch '/subscriptions' do
-  update_subscription(params[:title], params[:price], params[:recurring], params[:start_date], params[:cancel_date], params[:site_url], params[:user_id],params[:id])
+  update_subscription(params[:title], params[:price], (params[:recurring].to_i), params[:start_date], params[:cancel_date], params[:site_url], session[:user_id],params[:id])
   redirect "/"
 end
 
@@ -49,7 +54,8 @@ end
 post '/subscriptions' do   
   if logged_in?
     user_id = session[:user_id]
-    create_subscription(params[:title], params[:price], params[:recurring], params[:start_date], params[:cancel_date], params[:site_url], user_id)
+    # raise params[:recurring]
+    create_subscription(params[:title], params[:price], (params[:recurring].to_i), params[:start_date], params[:cancel_date], params[:site_url], user_id)
     redirect "/"
   else 
     message = ''
