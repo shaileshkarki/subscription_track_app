@@ -28,8 +28,6 @@ end
 # show information about individual subscription
 get '/subscriptions/:id' do
   subscription = find_one_subscription_by_id(params["id"])
-  # user = find_one_user_by_id(dish["user_id"])
-  # erb(:show, locals: {dish: dish, user: user})
   erb(:show, locals: {subscription: subscription})
 end
 
@@ -40,7 +38,6 @@ end
 
 patch '/subscriptions' do
   update_subscription(params[:title], params[:price], params[:recurring], params[:start_date], params[:cancel_date], params[:site_url], params[:user_id],params[:id])
-  # redirect "/subscriptions/#{params[:id]}"
   redirect "/"
 end
 
@@ -61,15 +58,20 @@ post '/subscriptions' do
   end
 end
 
-get '/dishes/new' do
+get '/subscriptions/new' do
   erb(:new)
 end
-
+get '/login' do
+  message = ''
+  # message = "You already have an account. Try Login!"
+  erb(:login, locals:{message: message})
+end
 post '/login' do
   user = find_one_user_by_email(params[:email]) 
   if user && BCrypt::Password.new(user["password_digest"]) == params[:password]
       session[:user_id] = user['id']
       session[:user_name] = user['user_name']
+      redirect "/"
   else
     message = ''
     message = "Email and Password did not match. Try Again!"
@@ -78,22 +80,33 @@ post '/login' do
 end
 
 get '/signup' do 
-  erb(:signup)
+  message = ''
+  erb(:signup, locals:{message: message})
 end
 post '/signup' do
+  message = ''
   user = find_one_user_by_email(params[:email]) 
   if user
-    message = ''
-    message = "You already have an account. Try Login!"
+    message = "You already have an account. Try login!"
     erb(:login, locals:{message: message})
   else
-    session[:user_id] = user['id']
-    redirect "/"
+    if params[:password] == params[:re_password]
+      create_user(params[:user_name], params[:email], params[:password])
+      user = find_one_user_by_email(params[:email])
+      session[:user_id] = user['id']
+      session[:user_name] = user['user_name']
+      redirect "/"
+    else
+      message = ''
+      message = "Password and re-password did not match. Try again!"
+      erb(:signup, locals:{message: message})
+    end
   end
 end
 
-post '/logout' do
+delete '/logout' do
   session[:user_id] = nil
+  session[:user_name] = nil
   redirect(:login)
 end
 

@@ -7,7 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  
+  <header>
+    <h1>Subscription Information Tracker</h1>
+    <div class="login-info">
+      <% if logged_in? %>
+        Username: <%= find_one_user_by_id(session[:user_id])["user_name"] %>
+        <% if session[:user_id] %>
+          <form action="/logout" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button>Logout</button>
+          </form>          
+        <% end %>
+      <% end %>
+    </div>
+  </header>
   <%= yield %>
 
 </body>
