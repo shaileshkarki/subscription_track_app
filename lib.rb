@@ -188,20 +188,95 @@ def days_interval(num)
     end
     days
 end
+#worked
+# def total_fee_for_current_month(id)
+#     fee = 0.0 
+#     last_day_of_month = find_last_day_of_month((Date.today).to_s) #gives date in string format
+#     first_day_of_month = Date.parse(last_day_of_month).strftime("%Y-%m-01") #gives date in string format
+#     subscriptions = all_subscriptions(id)
+#     subscriptions.each do |subscription|
+#         num = subscription['recurring']
+#         if(Date.parse(last_day_of_month)>=Date.parse(subscription['start_date']))
+#             if (num == 1 || num == "1")
+#                 # result = "Year"
+#                 price = subscription['price'].to_f
+#                 start_date = subscription['start_date']
+#                 num = subscription['recurring']
+#                 array_of_pay_dates = create_an_array_of_dates(start_date,first_day_of_month,last_day_of_month,num)
+#                 fee += (price*array_of_pay_dates.count)
+#             elsif (num == 2 || num == "2")
+#                 # result = "Half Year"
+#                 price = subscription['price'].to_f
+#                 start_date = subscription['start_date']
+#                 num = subscription['recurring']
+#                 array_of_pay_dates = create_an_array_of_dates(start_date,first_day_of_month,last_day_of_month,num)
+#                 fee += (price*array_of_pay_dates.count)
+#             elsif (num == 3 || num == "3")
+#                 price = subscription['price'].to_f
+#                 start_date = subscription['start_date']
+#                 num = subscription['recurring']
+#                 array_of_pay_dates = create_an_array_of_dates(start_date,first_day_of_month,last_day_of_month,num)
+#                 fee += (price*array_of_pay_dates.count)
+#             elsif (num == 4 || num == "4")
+#                 price = subscription['price'].to_f
+#                 start_date = subscription['start_date']
+#                 num = subscription['recurring']
+#                 array_of_pay_dates = create_an_array_of_dates(start_date,first_day_of_month,last_day_of_month,num)
+#                 fee += (price*array_of_pay_dates.count)
+#             elsif (num == 5 || num == "5")
+#                 # result = "Fort Night"
+#                 if((Date.parse(first_day_of_month)<Date.parse(subscription['start_date']))&&(Date.parse(last_day_of_month)>=Date.parse(subscription['start_date'])))
+#                     days = number_of_days_calculator(subscription['start_date'], last_day_of_month)
+#                     fee += ((days/14).to_i*subscription['price'].to_f)
+#                 else
+#                     fee += (2.to_i*subscription['price'].to_f)
+#                 end
+#             elsif (num == 6 || num == "6")
+#                 # result = "Week"
+#                 if((Date.parse(first_day_of_month)<Date.parse(subscription['start_date'])))
+#                     days = number_of_days_calculator(subscription['start_date'], last_day_of_month)
+#                     fee += ((days/7).to_i*subscription['price'].to_f)
+#                 else
+#                     days = number_of_days_calculator(first_day_of_month, last_day_of_month)
+#                     fee += ((days/7).to_i*subscription['price'].to_f)
+#                 end
+#             elsif (num == 7 || num == "7")
+#                 # result = "Month"
+#                 if((Date.parse(last_day_of_month)>=Date.parse(subscription['start_date'])))
+#                     fee += subscription['price'].to_f
+#                 end
+#             elsif (num == 8 || num == "8")
+#                 if((Date.parse(first_day_of_month)>=Date.parse(subscription['start_date'])))  
+#                     days = number_of_days_calculator(first_day_of_month, last_day_of_month)
+#                     fee += ((days).to_i*subscription['price'].to_f)
+#                 else
+#                     days = number_of_days_calculator(Date.parse(subscription['start_date']), last_day_of_month)
+#                     fee += ((days).to_i*subscription['price'].to_f)
+#                 end
+#             end
+#         else
+#             fee += 0
+#         end
+#     end
+#     return fee
+# end
+
+# total_fee_for_current_month(5)
 
 def total_fee_for_current_month(id)
-    fee = 0.0 
-    last_day_of_month = find_last_day_of_month((Date.today).to_s) #gives date in string format
-    first_day_of_month = Date.parse(last_day_of_month).strftime("%Y-%m-01") #gives date in string format
-    subscriptions = all_subscriptions(id)
-    subscriptions.each do |subscription|
-        price = subscription['price'].to_f
-        start_date = subscription['start_date']
-        num = subscription['recurring']
-        array_of_pay_dates = create_an_array_of_dates(start_date,first_day_of_month,last_day_of_month,num)
-        fee += (price*array_of_pay_dates.count)
+        fee = 0.0 
+        last_day_of_month = find_last_day_of_month((Date.today).to_s) #gives date in string format
+        first_day_of_month = Date.parse(last_day_of_month).strftime("%Y-%m-01") #gives date in string format
+        subscriptions = all_subscriptions(id)
+        subscriptions.each do |subscription|
+            num = subscription['recurring'].to_i
+            price = subscription['price'].to_f
+                start_date = subscription['start_date']
+                num = subscription['recurring']
+                array_of_pay_dates = create_an_array_of_dates(start_date,first_day_of_month,last_day_of_month,num)
+                fee += (price*array_of_pay_dates.count)
+                    
+        
+        end
+        return fee
     end
-    return fee
-end
-
-total_fee_for_current_month(5)
