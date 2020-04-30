@@ -14,10 +14,13 @@ enable :sessions
 #1 is user id for time being
 get '/' do 
   if session[:user_id]
-    subscriptions = all_subscriptions(session[:user_id])  
+    subscriptions = all_subscriptions(session[:user_id]) 
+    # raise subscriptions['start_date']
+    fee = calculate_expenses_for_given_month(session[:user_id],Date.today) 
     deletions = deletion_reminder(session[:user_id])
     erb(:index, locals: {
       subscriptions: subscriptions,
+      fee: fee,
       deletions: deletions
       })
   else
@@ -68,6 +71,8 @@ get '/subscriptions/new' do
   erb(:new)
 end
 get '/login' do
+  session[:user_id] = nil
+  session[:user_name] = nil
   message = ''
   # message = "You already have an account. Try Login!"
   erb(:login, locals:{message: message})
@@ -86,6 +91,8 @@ post '/login' do
 end
 
 get '/signup' do 
+  session[:user_id] = nil
+  session[:user_name] = nil
   message = ''
   erb(:signup, locals:{message: message})
 end

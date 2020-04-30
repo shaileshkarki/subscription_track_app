@@ -1,12 +1,12 @@
 <h1>Login Page</h1>
 
-<form action="/login" method="post">
+<form action="/login" name="login"method="post">
+    <label class="message" for=""><%= message %></label><br>
     <label for="email">Email</label>
-    <input name="email" type="text">
+    <input name="email" type="text" required>
     <label for="password">Password</label>
-    <input name="password" type="password">
+    <input name="password" type="password" required>
     <button>Login</button>
-    <button type="reset">Reset</button>
-    <a href="/signup">Sign Up</a>
-    <label class="message" for=""><%= message %></label>
+    <button type="reset">Reset</button><br>
+    <a href="/signup">Sign Up Here</a>
 </form>

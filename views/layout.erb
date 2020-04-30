@@ -7,20 +7,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <div class="content-wrapper">
   <header>
     <h1>Subscription Information Tracker</h1>
-    <div class="login-info">
+    
+  </header>
+   <nav>
+      <a href="/">Home</a>
+      <a href='/subscriptions/new'>Add New Subscription</a>
+      <a href="#">Manage Account</a>
+      <a href="#">Contact Us</a>
+      <a href="#">About</a>
+      <div class="login-info">
       <% if logged_in? %>
-        Username: <%= find_one_user_by_id(session[:user_id])["user_name"] %>
         <% if session[:user_id] %>
           <form action="/logout" method="post">
             <input type="hidden" name="_method" value="delete">
-            <button>Logout</button>
+            <label>Username: <%= find_one_user_by_id(session[:user_id])["user_name"] %></label>
+            <button class="logout">Logout</button>
           </form>          
         <% end %>
       <% end %>
     </div>
-  </header>
-  <%= yield %>
+    </nav>
+  <section>
+    <%= yield %>
+  </section>
+  <footer>
+  &copy; Copyright 2020
+  </footer>
+  </div>
+  <script src="../javascripts/application.js"></script>
 </body>
 </html>

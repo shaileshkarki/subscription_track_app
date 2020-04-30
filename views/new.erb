@@ -1,8 +1,8 @@
-<form action="/subscriptions" method="post">
+<form action="/subscriptions" name="new" method="post">
     <label for="title">Title</label>
-    <input name="title" type="text">
-    <label  for="price">Amount</label>
-    <input name="price" type="text">
+    <input name="title" type="text" required>
+    <label  for="price">Amount $</label>
+    <input name="price" type="number" placeholder="0.00"pattern="^\d*(\.\d{0,2})?$" step=".01" required>
     <label  for="recurring">Recurring</label>
     <select id="recurring" required>
         <option value="1">Yearly</option>
@@ -15,14 +15,11 @@
         <option value="8">Daily</option>
     </select>
     <label  for="start_date">Start Date</label>
-    <input name="start_date" type="date">
+    <input name="start_date" type="date" required>
     <label  for="cancel_date">Cancel Date</label>
-    <input name="cancel_date" type="date">
+    <input name="cancel_date" type="date" required>
     <label  for="site_url">Website URL</label>
-    <input name="site_url" type="text">
+    <input name="site_url" type="url">
     <button>Submit</button>
-</form>
-
-<form>
-    in
+    <button type="reset">Reset</button>
 </form>

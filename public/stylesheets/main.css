@@ -5,8 +5,52 @@
 body {
     /* max-width: 100%;
     max-height: 100%; */
+    /* font-size:1vw; */
+    font-size: 1rem;
+}
+main {
+    width: 100%;
+}
+header {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 20px;
+}
+nav{
+    overflow: hidden;
+    background-color: #333;
+    height:10%;
+}
+nav a{
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+nav a:hover, .logout:hover {
+    background-color: #ddd;
+    color: black;
 }
 
+section {
+    min-height:70%;
+}
+
+
+footer {
+    background-color: #F1F1F1;
+    padding: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+img {
+    max-width: 100%;
+}
 .subscription-info {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -20,11 +64,70 @@ body {
     background-color: #80cbc4;
     border: 1px solid #fff;
     padding: 20px;
-    font-size: 1rem;
+    font-size: 1.5vw;
     text-align: center;
     max-width: 100%;
 }
 .subscription-info>form {
     padding: 20px;
 }
+form {
+    margin: 10px 10%;
+    border: 1px solid #f1f1f1;
+    padding: 25px;
+    height: 50%;
+}
+input, select {
+    width: 100%;
+    margin: 8px 0;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
 
+input:focus, select:focus {
+    border: 3px solid lightblue;
+}
+
+form button {
+    background-color: rgba(0, 0, 255, 0.383);
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    margin: 10px auto;
+    cursor: pointer;
+    /* width: 45%; */
+}
+form>a {
+    text-decoration: none;
+    color: royalblue;
+    text-align: center;
+    margin-top: 10px;
+}
+
+form>.message {
+    color: red;
+    margin-bottom: 10px;
+}
+.login-info form, .login-info form>button {
+    background-color: #333; 
+    color: #f2f2f2;
+    border: none;
+}
+.login-info {
+    float: right;
+    display: stretch;
+    flex-flow: row wrap;
+    /* align-items: center; */
+    /* padding: 14px; */
+}
+.login-info form{
+    display:inline-block;   
+    margin:0;
+    padding:0;
+ }
+ .login-info button {
+    padding: 14px;
+    font-size: 1rem;
+    margin: 0;
+ }

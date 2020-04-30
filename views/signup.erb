@@ -1,13 +1,12 @@
-<form action="/signup" method="post">
+<form name="signup_form" action="/signup" method="post">
     <label for="user_name">Name</label>
-    <input name="user_name" type="text">
+    <input name="user_name" type="text" required>
     <label  for="email">Email</label>
-    <input name="email" type="text">
+    <input name="email" type="text" required>
     <label  for="password">Password</label>
-    <input name="password" type="password">
+    <input name="password" type="password" required>
     <label  for="re_password">Retype Password</label>
-    <input name="re_password" type="password">
+    <input name="re_password" type="password" required>
     <button>Submit</button>
     <button type="reset">Reset</button>
-    <label class="message" for=""><%= message %></label>
 </form>
