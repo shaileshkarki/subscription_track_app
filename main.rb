@@ -19,7 +19,6 @@ get '/' do
     subscriptions = all_subscriptions(session[:user_id]) 
     # raise subscriptions['start_date']
     fee = calculate_expenses_for_given_month(session[:user_id],Date.today) 
-    raise fee
     deletions = deletion_reminder(session[:user_id])
     erb(:index, locals: {
       subscriptions: subscriptions,
