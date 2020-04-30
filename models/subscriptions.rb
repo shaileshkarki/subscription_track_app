@@ -1,6 +1,6 @@
 def run_sql(sql,params)
     # conn = PG.connect(dbname: 'subscription_app')
-    PG.connect(ENV['DATABASE_URL'] || {dbname: 'subscription_app'})
+    conn = PG.connect(ENV['DATABASE_URL'] || {dbname: 'subscription_app'})
     #executing sql statement
     records = conn.exec_params(sql,params)
     # connection close
