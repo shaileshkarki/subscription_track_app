@@ -1,5 +1,5 @@
 <h1>Edit existing subscription</h1>
-<form action="/subscriptions" name="edit" method="post">
+<form action="/subscriptions" class="input-form" name="edit" method="post">
     <input name = "_method" type = "hidden" value = "patch">
     <input name = "id" type = "hidden" value = "<%= subscription['id']%>" required>
     <label for = "title">Title</label>

@@ -47,8 +47,13 @@ get '/subscriptions/:id/edit' do
 end
 
 patch '/subscriptions' do
-  update_subscription(params[:title], params[:price], (params[:recurring].to_i), params[:start_date], params[:cancel_date], params[:site_url], session[:user_id],params[:id])
-  redirect "/"
+  if session[:user_id]
+    user_id = session[:user_id]
+    update_subscription(params[:title], params[:price], (params[:recurring].to_i), params[:start_date], params[:cancel_date], params[:site_url], session[:user_id],params[:id])
+    redirect "/"
+  else
+    redirect "/login"
+  end
 end
 
 delete '/subscriptions' do 
@@ -57,7 +62,7 @@ delete '/subscriptions' do
 end
 
 post '/subscriptions' do   
-  if logged_in?
+  if session[:user_id]
     user_id = session[:user_id]
     # raise params[:recurring]
     create_subscription(params[:title], params[:price], (params[:recurring].to_i), params[:start_date], params[:cancel_date], params[:site_url], user_id)
@@ -70,7 +75,14 @@ post '/subscriptions' do
 end
 
 get '/subscriptions/new' do
-  erb(:new)
+  if session[:user_id]==nil
+    message = ''
+    message = "You have to login before you add the information."
+    erb(:login, locals:{message: message})
+  else
+    erb(:new)
+  end
+
 end
 get '/login' do
   session[:user_id] = nil

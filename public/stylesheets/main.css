@@ -51,6 +51,9 @@ footer {
 img {
     max-width: 100%;
 }
+.subscription-info>form {
+    /* margin: 1em 0; */
+}
 .subscription-info {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -59,26 +62,35 @@ img {
     border-radius: 10px;
     max-width: 100%;
     grid-auto-rows: max-content;
+    row-gap: 5px;
 }
 .item {
     background-color: #80cbc4;
     border: 1px solid #fff;
-    padding: 20px;
+    /* padding: 20px; */
+    margin: 0;
     font-size: 1.5vw;
     text-align: center;
     max-width: 100%;
 }
-.subscription-info>form {
-    padding: 20px;
+.item>a {
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 255, 0.383);
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    margin: 10px auto;
+    cursor: pointer;
 }
-.item>form {
+
+/* .item>form {
     height: 100%;
-}
-form {
-    margin: 10px 10%;
+} */
+.input-form {
+    margin: 1rem 10%;
     border: 1px solid #f1f1f1;
     padding: 25px;
-    height: 50%;
 }
 input, select {
     width: 100%;
@@ -133,4 +145,17 @@ form>.message {
     padding: 14px;
     font-size: 1rem;
     margin: 0;
+ }
+ .heading {
+     text-decoration: underline;
+     font-weight: 900;
+     padding-bottom: 1rem;
+ }
+
+ .notice {
+     color: red;
+ }
+ .padding-1rem {
+    padding-top: 1rem;
+    /* padding-bottom: 1rem; */
  }
