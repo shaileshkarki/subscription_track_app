@@ -1,8 +1,10 @@
 # api and library reference
 require 'sinatra'
-require 'sinatra/reloader'
+require 'sinatra/reloader' if development?
+require 'pry' if development?
 require 'pg'
 require 'date'
+require 'bcrypt'
 require_relative 'models/subscriptions'
 require_relative 'models/users'
 require_relative 'lib'

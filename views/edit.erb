@@ -1,11 +1,12 @@
+<h1>Edit existing subscription</h1>
 <form action="/subscriptions" name="edit" method="post">
     <input name = "_method" type = "hidden" value = "patch">
-    <input name = "id" type = "hidden" value = "<%= subscription['id']%>">
+    <input name = "id" type = "hidden" value = "<%= subscription['id']%>" required>
     <label for = "title">Title</label>
-    <input name = "title" type = "text" value = "<%= subscription['title']%>">
+    <input name = "title" type = "text" value = "<%= subscription['title']%>" required>
     <label  for = "price">Amount $</label>
-    <input name = "price" type = "text" value = "<%= subscription['price']%>">
-    <label  for = "recurring">Recurring <%= subscription['recurring']%></label>
+    <input name = "price" type = "text" placeholder="0.00"pattern="^\d*(\.\d{0,2})?$" step=".01" value = "<%= subscription['price']%>" required>
+    <label  for = "recurring">Recurring </label>
     <select name="recurring" required>
         <%["Yearly","Half Yearly","Quarterly","Bimonthly","Fortnightly","Weekly","Monthly","Daily"].each_with_index do |option,index| %>    
             <% if((subscription['recurring'].to_i)==(index+1)) %>
@@ -16,10 +17,10 @@
         <% end %>
     </select>
     <label  for = "start_date">Start Date</label>
-    <input name = "start_date" type = "date" value = "<%= subscription['start_date']%>">
+    <input name = "start_date" type = "date" value = "<%= subscription['start_date']%>" required>
     <label  for = "cancel_date">Cancel Date</label>
-    <input name = "cancel_date" type = "date" value = "<%= subscription['cancel_date']%>">
+    <input name = "cancel_date" type = "date" value = "<%= subscription['cancel_date']%>" required>
     <label  for = "site_url">Website URL</label>
-    <input name = "site_url" type = "text" value = "<%= subscription['site_url']%>">
+    <input name = "site_url" type = "text" value = "<%= subscription['site_url']%>" required>
     <button>Submit</button>
 </form>

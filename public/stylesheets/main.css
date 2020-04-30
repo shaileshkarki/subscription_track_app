@@ -71,6 +71,9 @@ img {
 .subscription-info>form {
     padding: 20px;
 }
+.item>form {
+    height: 100%;
+}
 form {
     margin: 10px 10%;
     border: 1px solid #f1f1f1;
