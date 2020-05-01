@@ -1,4 +1,4 @@
-require 'bcrypt'
+
 
 def find_one_user_by_id(id)
     params = [id]
