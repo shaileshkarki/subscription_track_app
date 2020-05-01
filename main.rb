@@ -67,7 +67,6 @@ post '/subscriptions' do
   if session[:user_id]
     user_id = session[:user_id]
     p params[:recurring]
-    p "fdsfadfd"
     #  raise params[:recurring]
 
     # raise session[:user_id]
@@ -145,6 +144,6 @@ delete '/logout' do
   redirect(:login)
 end
 
-# get '/:anything' do
-#   erb(:under_construction)
-# end
+get '/:anything' do
+  erb(:under_construction)
+end
