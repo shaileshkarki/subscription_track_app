@@ -82,6 +82,8 @@ img {
     text-decoration: none;
     margin: 10px auto;
     cursor: pointer;
+    position: relative;
+    top: 1.1rem;
 }
 
 /* .item>form {

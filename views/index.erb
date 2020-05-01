@@ -2,7 +2,7 @@
 <% if deletions.count==0%>
     <h2 classs="notice">No subscriptions to delete today.</h2>
 <%else%>
-<h2 classs="notice">Reminder for deletion today:</h2> 
+<h2 classs="notice">Reminder for deletion:</h2> 
 <div class="subscription-info">
     <p class="item padding-1rem heading">
         Title   
@@ -44,7 +44,7 @@
         <p class="item padding-1rem">
             <a href="/subscriptions/<%= deletion["id"]%>/edit">Update</a> 
         </p>
-        <form class="item padding-1rem" action="/subscriptions" method="post">
+        <form class="item padding-1rem deletion-for" action="/subscriptions" method="post">
             <input class="hidden-input" type="hidden" name="id" value=<%= deletion["id"]%>>
             <input class="hidden-input" type="hidden" name="_method" value="delete">
             <button>Delete</button>
@@ -94,7 +94,7 @@
         <p class="item padding-1rem">
             <a href="/subscriptions/<%= subscription["id"]%>/edit">Update</a> 
         </p>
-        <form class="item padding-1rem" action="/subscriptions" method="post">
+        <form class="item padding-1rem deletion-for" action="/subscriptions" method="post">
             <input class="hidden-input" type="hidden" name="id" value=<%= subscription["id"]%>>
             <input class="hidden-input" type="hidden" name="_method" value="delete">
             <button>Delete</button>
@@ -102,5 +102,5 @@
     <% end%>
 <div>  
     
-
+<script src="/javascripts/index.js"></script>
    

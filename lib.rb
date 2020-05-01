@@ -22,7 +22,7 @@ def check_recurring(num)
     elsif num == 3
         result = "Quarter"
     elsif num == 4
-        result = "Bi-month"
+        result = "2-months"
     elsif num == 5
         result = "Fort Night"
     elsif num == 6
@@ -144,12 +144,19 @@ def create_an_array_of_dates(start_date,start_month_date,end_month_date,num)
     num = days_interval(num).to_i
     date_array = []
     if(start_date <= end_month_date)
+        # count = 0
         while Date.parse(start_date) <= Date.parse(end_month_date)  do
             next_time = Date.parse(start_date).next_day(num).to_s
             if(Date.parse(next_time)>=Date.parse(start_month_date)&&Date.parse(next_time)<=Date.parse(end_month_date) )
                 date_array.push(next_time)
             end
             start_date  = next_time
+            # if count > 10
+            #     break
+            # end
+            # count += 1
+            # p next_time, num
+
         end
     end
     date_array       
@@ -172,7 +179,7 @@ def days_interval(num)
         days = 91
     elsif (num == 4 || num == "4")
         # result = "Bi-month"
-        days = 360
+        days = 60
     elsif (num == 5 || num == "5")
         # result = "Fort Night"
         days = 14
@@ -185,6 +192,8 @@ def days_interval(num)
     elsif (num == 8 || num == "8")
         days = 1
         # result = "Day"
+    else
+        days = 30
     end
     days
 end

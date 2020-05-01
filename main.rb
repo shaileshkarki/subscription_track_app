@@ -16,6 +16,7 @@ enable :sessions
 #1 is user id for time being
 get '/' do 
   if session[:user_id]
+    
     subscriptions = all_subscriptions(session[:user_id]) 
     # raise subscriptions['start_date']
     fee = total_fee_for_current_month(session[:user_id])
@@ -65,8 +66,13 @@ end
 post '/subscriptions' do   
   if session[:user_id]
     user_id = session[:user_id]
-    # raise params[:recurring]
+    p params[:recurring]
+    p "fdsfadfd"
+    #  raise params[:recurring]
+
+    # raise session[:user_id]
     create_subscription(params[:title], params[:price], (params[:recurring].to_i), params[:start_date], params[:cancel_date], params[:site_url], user_id)
+    # raise session[:user_id]
     redirect "/"
   else 
     message = ''
@@ -97,6 +103,7 @@ post '/login' do
   if user && BCrypt::Password.new(user["password_digest"]) == params[:password]
       session[:user_id] = user['id']
       session[:user_name] = user['user_name']
+      # raise here
       redirect "/"
   else
     message = ''
@@ -138,3 +145,6 @@ delete '/logout' do
   redirect(:login)
 end
 
+# get '/:anything' do
+#   erb(:under_construction)
+# end

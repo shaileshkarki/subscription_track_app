@@ -1,7 +1,7 @@
-// var signup_form = document.forms["signup"]
-// var new_form = document.forms["new"]
+
+
 // var login_form = document.forms["login"]
-var edit_form = document.forms["edit"]
+
 var emailIsValid = function (email) {
     return /\S+@\S+\.\S+/.test(email)
 }  
@@ -41,22 +41,21 @@ var emailIsValid = function (email) {
 //         return false 
 //     }
 // }
-// var validateSignupForm = function () {
-//     var email = signup["email"].value;
-//     var password = signup["password"].value;
-//     var re_password = signup["re_password"].value;
-//     if(!emailIsValid(email)) {
-//         alert("Email is invalid. Try again!");
-//         return false
-//     }
-//     if (password != re_password) {
-//         alert("Password and Re-password did not match. Try again!");
-//         return false;
-//     }
-//   }
+// // var validateSignupForm = function () {
+// //     var email = signup["email"].value;
+// //     var password = signup["password"].value;
+// //     var re_password = signup["re_password"].value;
+// //     if(!emailIsValid(email)) {
+// //         alert("Email is invalid. Try again!");
+// //         return false
+// //     }
+// //     if (password != re_password) {
+// //         alert("Password and Re-password did not match. Try again!");
+// //         return false;
+// //     }
+// //   }
 
-// signup_form.addEventListener('submit',validateSignupForm);
-// new_form.addEventListener('submit',validateNewForm);
+// // signup_form.addEventListener('submit',validateSignupForm);
 // login_form.addEventListener('submit',validateLoginForm);
-// edit_form.addEventListener('submit',validateEditForm);
+// // edit_form.addEventListener('submit',validateEditForm);
 
